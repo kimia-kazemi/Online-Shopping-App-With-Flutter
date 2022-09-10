@@ -1,0 +1,45 @@
+name: shoppo
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  # switch animation between light and dark theme
+  animated_theme_switcher: ^2.0.1-nullsafety.0
+
+  # persist locally data
+  # pick image
+  image_picker: ^0.8.5+3
+
+  # store image
+  path_provider: ^2.0.1
+  http: any
+  shared_preferences: ^2.0.5
+
+  get: ^4.6.5
+  bloc: ^8.0.3
+  email_validator: ^2.0.1
+  equatable: ^2.0.3
+  flutter_staggered_grid_view: ^0.6.2
+  flutter_native_splash: ^2.2.7
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+flutter_native_splash:
+  background_image: assets/images/splash.png
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/
+
