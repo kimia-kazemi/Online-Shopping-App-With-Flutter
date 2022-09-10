@@ -4,6 +4,7 @@
 - getting product using API
 - saving data using shared preferences 
 - switching theme
+
 preview of app:
 
 
