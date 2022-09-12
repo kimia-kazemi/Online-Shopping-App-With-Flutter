@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoppo/controllers/card_controller.dart';
 import 'package:shoppo/models/cart_model.dart';
-import 'package:shoppo/models/products.dart';
 import 'package:shoppo/widgets/appbar_widger.dart';
 
-import '../design/product_tile.dart';
 import '../sotrage/card_info.dart';
 
 

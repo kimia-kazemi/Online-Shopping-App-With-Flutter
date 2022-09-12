@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../models/user_model.dart';
 import '../sotrage/user_bio.dart';

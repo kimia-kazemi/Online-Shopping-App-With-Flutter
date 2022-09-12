@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:ui';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-// import 'package:get/get_core/src/get_main.dart';
 import 'package:shoppo/constatnts/kappbar.dart';
-// import 'package:get/get.dart';
-
-import 'package:shoppo/constatnts/navigation_page.dart';
 import 'package:shoppo/constatnts/search_widget.dart';
 import 'package:shoppo/controllers/product_controller.dart';
 import 'package:shoppo/design/product_tile.dart';
@@ -22,7 +17,6 @@ import '../sotrage/user_bio.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
-  static const id = 'welcom_screen';
   @override
   _WelcomeScreen createState() => _WelcomeScreen();
 }
@@ -105,10 +99,10 @@ class _WelcomeScreen extends State<WelcomeScreen> {
   Widget buildSearch() => SearchWidget(
     text: query,
     hintText: 'Search a brand or type',
-    onChanged: searchBook,
+    onChanged: searchProduct,
   );
 
-  void searchBook(String query) {
+  void searchProduct(String query) {
     final cards = productController.productlist.where((card) {
       final titleLower = card.name?.toLowerCase();
       final authorLower = card.brand?.toLowerCase();
@@ -124,16 +118,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
       this.searchedPrd = cards;
     });
   }
-  Widget buildBook(Makeup book) => ListTile(
-    leading: Image.network(
-       book.imageLink ?? "",
-      fit: BoxFit.cover,
-      width: 50,
-      height: 50,
-    ),
-    title: Text(book.name?? ""),
-    subtitle: Text(book.brand?? ""),
-  );
+
 
 
   Widget build(BuildContext context) {

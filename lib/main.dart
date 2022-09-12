@@ -1,6 +1,8 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shoppo/screens/sign_up_in.dart';
+import 'package:shoppo/screens/welcom.dart';
 import 'package:shoppo/sotrage/card_info.dart';
 import 'package:shoppo/theme/themes.dart';
 import 'package:shoppo/sotrage/user_bio.dart';

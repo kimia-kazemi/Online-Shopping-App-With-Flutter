@@ -2,19 +2,15 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 
 
-import '../constatnts/navigation_page.dart';
 import '../models/user_model.dart';
 import '../sotrage/user_bio.dart';
-import '../widgets/appbar_widger.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/numbeers_widget.dart';
 import '../widgets/profile_widget.dart';
 import 'edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {
-
   @override
-
   _ProfilePageState createState() => _ProfilePageState();
 }
 
