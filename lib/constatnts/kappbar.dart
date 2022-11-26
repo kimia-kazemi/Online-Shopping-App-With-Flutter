@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:shoppo/screens/shop_list.dart';
 
- kAppBar(context){
-
-
-
+kAppBar(context) {
   return AppBar(
-
     iconTheme: IconThemeData(color: Colors.black),
-    title: Text('Shoppo',style: TextStyle(color: Colors.black),),
+    title: Text('Shoppo',
+        style: GoogleFonts.aclonica(
+            fontSize: 25, color: Colors.black, fontStyle: FontStyle.italic)),
     actions: <Widget>[
       Align(
         alignment: Alignment.centerLeft,
         child: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>  ShopList()),
-          );
-
+              context,
+              MaterialPageRoute(builder: (context) => ShopList()),
+            );
           },
           icon: Icon(Icons.shopping_cart),
-          highlightColor: Colors.white,
         ),
       ),
       Align(
         alignment: Alignment.centerLeft,
         child: IconButton(
-          onPressed: (){
-          },
+          onPressed: () {},
           icon: Icon(Icons.add_alert),
-          highlightColor: Colors.white,
-
         ),
       ),
     ],
   );
 }
-
-

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shoppo/provider/counter_provider.dart';
 
-import '../models/user_model.dart';
-import '../sotrage/user_bio.dart';
 
 
 class NumbersWidget extends StatefulWidget {
@@ -10,28 +10,21 @@ class NumbersWidget extends StatefulWidget {
 }
 
 class _NumbersWidgetState extends State<NumbersWidget> {
-   late User user;
 
- late int likedNumber = user.likedNumber;
+  var counterController = Get.put(Counter());
 
 
-   @override
-   void initState() {
-     super.initState();
-
-     user = UserPreferences.getUser();
-   }
 
   @override
 
   Widget build(BuildContext context) => Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      buildButton(context, '4.8', 'Score'),
+      buildButton(context, '4.8', 'Bonus points'),
       buildDivider(),
-      buildButton(context, '35', 'Wallet'),
+      buildButton(context, '35', 'Your Wallet'),
       buildDivider(),
-      buildButton(context, '$likedNumber', 'Saved'),
+      buildButton(context, '${counterController.counter}', 'Saved'),
     ],
   );
 

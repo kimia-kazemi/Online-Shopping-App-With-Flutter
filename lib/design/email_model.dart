@@ -12,6 +12,7 @@ class EmailFieldWidget extends StatefulWidget {
   @override
   _EmailFieldWidgetState createState() => _EmailFieldWidgetState();
 }
+
 class _EmailFieldWidgetState extends State<EmailFieldWidget> {
   @override
   void initState() {
@@ -26,28 +27,27 @@ class _EmailFieldWidgetState extends State<EmailFieldWidget> {
 
     super.dispose();
   }
-  void onListen() => setState(() {});
 
+  void onListen() => setState(() {});
 
   @override
   Widget build(BuildContext context) => TextFormField(
-    controller: widget.controller,
-    decoration: InputDecoration(
-      hintText: 'Email',
-      prefixIcon: Icon(Icons.mail),
-      suffixIcon: widget.controller.text.isEmpty
-          ? Container(width: 0)
-          : IconButton(
-        icon: Icon(Icons.close),
-        onPressed: () => widget.controller.clear(),
-      ),
-    ),
-    keyboardType: TextInputType.emailAddress,
-    autofillHints: [AutofillHints.email],
-    textInputAction: TextInputAction.done,
-    validator: (email) => email != null && !EmailValidator.validate(email)
-        ? 'Enter a valid email'
-        : null,
-  );
-
+        controller: widget.controller,
+        decoration: InputDecoration(
+          hintText: 'Email',
+          prefixIcon: Icon(Icons.mail),
+          suffixIcon: widget.controller.text.isEmpty
+              ? Container(width: 0)
+              : IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () => widget.controller.clear(),
+                ),
+        ),
+        keyboardType: TextInputType.emailAddress,
+        autofillHints: [AutofillHints.email],
+        textInputAction: TextInputAction.done,
+        validator: (email) => email != null && !EmailValidator.validate(email)
+            ? 'Enter a valid email'
+            : null,
+      );
 }

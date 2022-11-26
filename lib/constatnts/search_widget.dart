@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../models/cart_model.dart';
 
 class SearchWidget extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
   final String hintText;
-
 
   const SearchWidget({
     Key? key,
@@ -23,6 +21,20 @@ class _SearchWidgetState extends State<SearchWidget> {
   final controller = TextEditingController();
   late CardModel card;
   String query = '';
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(onListen);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(onListen);
+    super.dispose();
+  }
+
+  void onListen() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +57,12 @@ class _SearchWidgetState extends State<SearchWidget> {
           icon: Icon(Icons.search, color: style.color),
           suffixIcon: widget.text.isNotEmpty
               ? GestureDetector(
-            child: Icon(Icons.close, color: style.color),
-            onTap: () {
-              controller.clear();
-              widget.onChanged('');
-            },
-          )
+                  child: Icon(Icons.close, color: style.color),
+                  onTap: () {
+                    controller.clear();
+                    widget.onChanged('');
+                  },
+                )
               : null,
           hintText: widget.hintText,
           hintStyle: style,

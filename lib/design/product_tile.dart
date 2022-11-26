@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoppo/constatnts/kappbar.dart';
-import 'package:shoppo/controllers/card_controller.dart';
+
 import 'package:shoppo/models/cart_model.dart';
 import 'package:shoppo/models/products.dart';
-import 'package:shoppo/models/user_model.dart';
+import 'package:shoppo/provider/counter_provider.dart';
+import 'package:shoppo/screens/detail_of_product.dart';
 import 'package:shoppo/sotrage/card_info.dart';
-import 'package:shoppo/widgets/numbeers_widget.dart';
 
-import '../constatnts/search_widget.dart';
-import '../screens/shop_list.dart';
-import '../sotrage/user_bio.dart';
+import '../widgets/add_widget.dart';
 
 class ProductTile extends StatefulWidget {
   final Makeup product;
+
   ProductTile(this.product);
 
   @override
@@ -21,32 +19,23 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
-  late int likedNumber = user.likedNumber;
-  CardController cardController=  Get.put(CardController());
-  late User user;
- late Makeup makeup;
+  late Makeup makeup;
   var favoridProducts = [];
-  var shopList=[];
-  late bool flag= true;
+  var shopList = [];
+  late bool flag = true;
   late CardModel card;
   String query = '';
-  late List<CardModel> cardlist = cardController.getItems;
-
-
+  var counterController = Get.put(Counter());
 
   @override
   void initState() {
     super.initState();
-
-    user = UserPreferences.getUser();
     card = CardPreferences.getCard();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return
-      Card(
+    return Card(
       elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -56,70 +45,67 @@ class _ProductTileState extends State<ProductTile> {
             Stack(
               children: [
                 Container(
-                  height: 180,
-                  width: double.infinity,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child:
-                 Image.network(widget.product.imageLink ?? "",
-                   fit: BoxFit.cover,
-                   errorBuilder:
-                       (BuildContext context, Object exception, StackTrace? stackTrace) {
-                     return const Icon(Icons.error);
-                   },
-                   )
-
-                ),
+                    height: 180,
+                    width: double.infinity,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: GestureDetector(
+                      child: Image.network(
+                        widget.product.imageLink ?? "",
+                        fit: BoxFit.cover,
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace? stackTrace) {
+                          return const Icon(Icons.error);
+                        },
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DetailProduct(widget.product)));
+                      },
+                    )),
                 Positioned(
                   right: 0,
-                  child: Obx(() => CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      icon: widget.product.isFavorite.value
-                          ? Icon(Icons.favorite_rounded)
-                          : Icon(Icons.favorite_border),
-                      onPressed: () {
-                        widget.product.isFavorite.toggle();
-                        if(widget.product.isFavorite.value && !(favoridProducts.contains(widget.product.id)) ) {
-                          favoridProducts.add(widget.product.id);
-                          setState(() {
-                            print('lenght is');
-                            print(favoridProducts.length);
-                            likedNumber = user.likedNumber +1;
-                            user =
-                                user.copy(likedNumber: likedNumber);
+                  child: Obx(
+                    () => CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: IconButton(
+                        icon: widget.product.isFavorite.value
+                            ? Icon(Icons.favorite_rounded)
+                            : Icon(Icons.favorite_border),
+                        onPressed: () {
+                          widget.product.isFavorite.toggle();
 
-                            UserPreferences.setUser(user);
-                            flag = false;
-                          });
-                        }
-                          // if ((favoridProducts.contains(widget.product.id)) && flag == true) {
-                          //
-                          // }
-                          if(widget.product.isFavorite == false){
+                          print(widget.product.isFavorite);
+
+                          //TODO
+                          widget.product.isFavorite.value
+                              ? counterController.incremet()
+                              : counterController.decremet();
+                          if (widget.product.isFavorite == false) {
                             favoridProducts.remove(widget.product.id);
-                            likedNumber = likedNumber-1;
-                            user = user.copy(likedNumber: likedNumber);
-                            UserPreferences.setUser(user);
-
                           }
-                      },
+                        },
+                      ),
                     ),
-                  )),
-                )
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 8),
-            (widget.product.name == null) ? Container() :
-            Text(
-              widget.product.name ?? "",
-              maxLines: 2,
-              style:
-              TextStyle(fontFamily: 'avenir', fontWeight: FontWeight.w800),
-              overflow: TextOverflow.ellipsis,
-            ),
+            (widget.product.name == null)
+                ? Container()
+                : Text(
+                    widget.product.name ?? "",
+                    maxLines: 2,
+                    style: TextStyle(
+                        fontFamily: 'avenir', fontWeight: FontWeight.w800),
+                    overflow: TextOverflow.ellipsis,
+                  ),
             SizedBox(height: 8),
             if (widget.product.rating != null)
               Container(
@@ -144,21 +130,16 @@ class _ProductTileState extends State<ProductTile> {
                 ),
               ),
             SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: Text('\$${widget.product.price}',
-                      style: TextStyle(fontSize: 20, fontFamily: 'avenir')),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add_circle_outline_outlined,size: 20,),
-                  onPressed: () {
-                    cardController.addItmes(widget.product);
-
-                  }
-
-                )
-              ],
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('\$${widget.product.price}',
+                      style: TextStyle(fontSize: 18, fontFamily: 'avenir')),
+                  Quantitybtn(widget.product)
+                ],
+              ),
             ),
           ],
         ),
@@ -166,4 +147,3 @@ class _ProductTileState extends State<ProductTile> {
     );
   }
 }
-

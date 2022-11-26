@@ -2,13 +2,17 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/cart_model.dart';
-import '../models/user_model.dart';
-
 
 class CardPreferences {
-  static  SharedPreferences? _preferences;
+  static SharedPreferences? _preferences;
   static const _keyCard = 'card';
-  static  CardModel myCard = CardModel(id: 0, brand: "your brand", name: "your name", price: "your price", imageLink: "your image");
+  static CardModel myCard = CardModel(
+      id: 0,
+      brand: "your brand",
+      name: "your name",
+      price: "your price",
+      imageLink: "your image",
+      count: 0);
 
   static Future init() async {
     _preferences = await SharedPreferences.getInstance();
