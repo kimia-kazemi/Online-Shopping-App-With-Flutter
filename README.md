@@ -8,5 +8,5 @@
 preview of app:
 
 
-![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/1.gif)![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/2.gif)
+![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/shoppoPreview.gif)![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/2.gif)
 
