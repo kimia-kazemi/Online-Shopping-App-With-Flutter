@@ -20,6 +20,7 @@ class DetailProduct extends StatefulWidget {
   _DetailProductState createState() => _DetailProductState();
 }
 
+
 class _DetailProductState extends State<DetailProduct> {
   double fiveStar = 0;
   double fourStar = 0;

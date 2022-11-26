@@ -42,6 +42,7 @@ class _SignInUp extends State<SignInUp> {
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       if (jsonResponse != null) {
+
         setState(() {
           _isloading = false;
         });
