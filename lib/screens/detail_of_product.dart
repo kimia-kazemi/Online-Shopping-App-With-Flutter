@@ -11,6 +11,7 @@ import '../widgets/rating_bar.dart';
 
 enum ConfirmAction { CANCEL, ACCEPT }
 
+
 class DetailProduct extends StatefulWidget {
   final Makeup product;
 
