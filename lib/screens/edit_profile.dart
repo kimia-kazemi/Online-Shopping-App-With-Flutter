@@ -1,11 +1,6 @@
-import 'dart:io';
-
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+// import 'package:image_picker/image_picker.dart';
 
 import '../models/user_model.dart';
 import '../sotrage/user_bio.dart';
@@ -42,19 +37,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   imagePath: user.imagePath,
                   isEdit: true,
                   onClicked: () async {
-                    final image = await ImagePicker()
-                        .pickImage(source: ImageSource.gallery);
+                    // final image = await ImagePicker
+                    //     .pickImage(source: ImageSource.gallery);
                     // .getImage(source: ImageSource.gallery);
 
-                    if (image == null) return print('image is null');
+                    // if (image == null) return print('image is null');
+                    //
+                    // final directory = await getApplicationDocumentsDirectory();
+                    // final name = basename(image.path);
+                    // final imageFile = File('${directory.path}/$name');
+                    // final newImage =
+                    //     await File(image.path).copy(imageFile.path);
 
-                    final directory = await getApplicationDocumentsDirectory();
-                    final name = basename(image.path);
-                    final imageFile = File('${directory.path}/$name');
-                    final newImage =
-                        await File(image.path).copy(imageFile.path);
-
-                    setState(() => user = user.copy(imagePath: newImage.path));
+                    //setState(() => user = user.copy(imagePath: newImage.path));
                   },
                 ),
                 const SizedBox(height: 24),

@@ -39,6 +39,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
 
   late List<Makeup> searchPrd;
 
+
   fetchData() async {
     List<String> banner = [];
     for (var i = 1; i < 7; i++) {
@@ -212,7 +213,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
     return ThemeSwitchingArea(
       child: Builder(
           builder: (context) => Scaffold(
-                appBar: kAppBar(context),
+                appBar: UserAppBar(context),
                 drawer: _drawer(),
                 body: SingleChildScrollView(
                   child: SafeArea(
@@ -386,6 +387,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                                     return Column(
                                       children: [
                                         ProductTile(item),
+
                                       ],
                                     );
                                   },

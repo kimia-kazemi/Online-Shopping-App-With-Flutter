@@ -7,14 +7,12 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-#  provider: ^6.0.3
-  # switch animation between light and dark theme
-  animated_theme_switcher: ^2.0.1-nullsafety.0
-  # persist locally data
-  # pick image
-  image_picker: ^0.8.5+3
 
-  # store image
+  animated_theme_switcher: ^2.0.1-nullsafety.0
+
+  image_picker: ^0.8.6
+  camera: ^0.5.7+2
+
   path_provider: ^2.0.1
   http: any
   shared_preferences: ^2.0.5
@@ -22,19 +20,25 @@ dependencies:
   google_fonts: ^2.1.0
   percent_indicator: ^3.0.1
   flutter_slidable: ^0.6.0
+  hive_flutter: ^1.1.0
+  uuid: ^3.0.6
+  intl: ^0.17.0
+  fluttertoast: ^8.0.9
+  file_picker: ^5.2.0
+  json_serializable: ^6.5.4
+  json_annotation: ^4.6.0
+  animations: ^2.0.0
 
   get: ^4.6.5
 
   email_validator: ^2.0.1
   equatable: ^2.0.3
   flutter_staggered_grid_view: ^0.6.2
- # flutter_native_splash: ^2.2.7
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-#flutter_native_splash:
-#  background_image: assets/images/splash.png
+
 
 
 dev_dependencies:
@@ -47,5 +51,6 @@ flutter:
   assets:
     - assets/images/
     - assets/data/
+
 
 

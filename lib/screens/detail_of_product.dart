@@ -11,7 +11,6 @@ import '../widgets/rating_bar.dart';
 
 enum ConfirmAction { CANCEL, ACCEPT }
 
-
 class DetailProduct extends StatefulWidget {
   final Makeup product;
 
@@ -20,7 +19,6 @@ class DetailProduct extends StatefulWidget {
   @override
   _DetailProductState createState() => _DetailProductState();
 }
-
 
 class _DetailProductState extends State<DetailProduct> {
   double fiveStar = 0;
