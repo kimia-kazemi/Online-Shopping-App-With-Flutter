@@ -8,6 +8,7 @@
 preview of app:
 
 ![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/preview.gif)
+
 admin panel:
 ![](https://github.com/kimia-kazemi/Online-Shopping-App-With-Flutter/blob/main/previwe2.gif)
 
