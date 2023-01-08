@@ -18,7 +18,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     late final user = UserPreferences.getUser();
-
     return ThemeSwitchingArea(
       child: Builder(
         builder: (context) => SafeArea(
