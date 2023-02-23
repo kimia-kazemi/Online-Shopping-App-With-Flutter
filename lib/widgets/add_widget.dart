@@ -14,11 +14,11 @@ class Quantitybtn extends StatefulWidget {
 }
 
 class QuantitybtnState extends State<Quantitybtn> {
-  CardController cardController = Get.put(CardController());
 
   bool visibility = false;
   var count = 1;
-  var controller = Get.put(CardController());
+  CardController controller = Get.find<CardController>();
+
 
   void _changed() {
     setState(() {

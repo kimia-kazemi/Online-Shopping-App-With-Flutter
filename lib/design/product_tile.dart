@@ -79,9 +79,7 @@ class _ProductTileState extends State<ProductTile> {
                             : Icon(Icons.favorite_border),
                         onPressed: () {
                           widget.product.isFavorite.toggle();
-
                           print(widget.product.isFavorite);
-
                           //TODO
                           widget.product.isFavorite.value
                               ? counterController.incremet()

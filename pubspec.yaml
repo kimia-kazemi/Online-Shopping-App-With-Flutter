@@ -9,13 +9,13 @@ environment:
 dependencies:
 
   animated_theme_switcher: ^2.0.1-nullsafety.0
-
   image_picker: ^0.8.6
   camera: ^0.5.7+2
-
   path_provider: ^2.0.1
   http: any
   shared_preferences: ^2.0.5
+  flutter_charts: ^0.5.0
+
   carousel_slider: ^4.1.1
   google_fonts: ^2.1.0
   percent_indicator: ^3.0.1
@@ -28,8 +28,11 @@ dependencies:
   json_serializable: ^6.5.4
   json_annotation: ^4.6.0
   animations: ^2.0.0
+  google_maps_flutter: ^2.2.3
+  animated_text_kit: ^4.2.2
 
   get: ^4.6.5
+  geolocator: ^9.0.2
 
   email_validator: ^2.0.1
   equatable: ^2.0.3
@@ -38,6 +41,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.4.1
+  firebase_database: ^10.0.9
+  firebase_auth: ^4.2.5
+
+
 
 
 

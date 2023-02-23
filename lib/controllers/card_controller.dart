@@ -6,7 +6,6 @@ class CardController extends GetxController {
   Map items = <dynamic, CardModel>{}.obs;
   var shopList = [].obs;
 
-  int counter = 0;
   double _totalprice = 0;
 
   double get totalprice => _totalprice;

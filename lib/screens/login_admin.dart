@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shoppo/constatnts/admin_navigation_page.dart';
-import 'package:shoppo/constatnts/navigation_page.dart';
 import 'package:shoppo/models/assets.dart';
 import 'package:shoppo/design/email_model.dart';
-import 'package:shoppo/models/sign_validate.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import '../design/password_model.dart';
 
@@ -31,33 +27,6 @@ class _loginAmin extends State<loginAmin> {
   void initState() {
     super.initState();
     emailController.addListener(() => setState(() {}));
-  }
-
-  auth(String email, pass) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map data = {'email': email, 'password': pass};
-    String url = "Your URL";
-    var jsonResponse;
-    var response = await http.post(Uri.parse(url), body: data);
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-      if (jsonResponse != null) {
-        setState(() {
-          _isloading = false;
-        });
-        //set sharedPreferences that app will remember not to navigate signIn page when app restarts
-        sharedPreferences.setString("token", jsonResponse['token']);
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (BuildContext context) => NavigationPage()),
-            (Route<dynamic> route) => false);
-      }
-    } else {
-      setState(() {
-        _isloading = false;
-      });
-      print(response.body);
-    }
   }
 
   @override

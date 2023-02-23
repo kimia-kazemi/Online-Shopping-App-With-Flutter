@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "238394533594",
+    "firebase_url": "https://onlineshopping-77935-default-rtdb.firebaseio.com",
+    "project_id": "onlineshopping-77935",
+    "storage_bucket": "onlineshopping-77935.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238394533594:android:dbec9e6c81e354a5f4e7e3",
+        "android_client_info": {
+          "package_name": "com.example.shoppo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238394533594-oq01k38r88mkt0l5lep0uru0pqc2cori.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5mTnqxqn2T4NO8pIqhLVgXsAZVn00lqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238394533594-oq01k38r88mkt0l5lep0uru0pqc2cori.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "238394533594-oiraje2vfumeq7v03j5o7apes00sc484.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoppo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

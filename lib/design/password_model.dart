@@ -44,19 +44,8 @@ class _PassworFieldWidget extends State<PassworFieldWidget> {
         ),
         obscureText: true,
 
-        // validator: (password) => password != null &&  !passwordValidator(password)
-        //     ? 'Enter a valid password'
-        //     : null,
-
-        validator: (password) {
-          if (password!.trim().isEmpty) {
-            return 'Password is required';
-          } else
-            return " ";
-        },
+        validator: (password) => password != null && password.length < 3
+            ? 'Enter a valid password'
+            : null,
       );
-
-  passwordValidator(password) {
-    return Text('entered');
-  }
 }

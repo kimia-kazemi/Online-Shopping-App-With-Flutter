@@ -4,6 +4,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:shoppo/screens/map_screen.dart';
 
 import '../models/address_model.dart';
 
@@ -136,7 +137,12 @@ class AddressManagerScreenState extends State<AddressManagerScreen> {
               IconButton(
                 icon: Icon(Icons.add),
                 //TODO: create the screen
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MapScreen()));
+                },
               )
             ],
             title: Text("Address Manager"),

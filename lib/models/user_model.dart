@@ -5,7 +5,6 @@ class User {
   final String about;
   final String address;
   final String phonenumber;
-
   final bool isDarkMode;
   int likedNumber;
 

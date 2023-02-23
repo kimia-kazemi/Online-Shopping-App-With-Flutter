@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
+import '../controllers/controller.dart';
 import '../design/address_manager.dart';
 import '../models/address_model.dart';
 
@@ -23,6 +25,7 @@ class ShOrderSummaryScreenState extends State<ShOrderSummaryScreen> {
   var currentIndex = 0;
   Timer? timer;
   var isLoaded = false;
+  GetController pickupController = Get.find<GetController>();
 
   //
   @override
@@ -84,116 +87,6 @@ class ShOrderSummaryScreenState extends State<ShOrderSummaryScreen> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
-    // var cartList = isLoaded
-    //     ? ListView.builder(
-    //     scrollDirection: Axis.vertical,
-    //     itemCount: list.length,
-    //     shrinkWrap: true,
-    //     padding: EdgeInsets.only(bottom: 8),
-    //     physics: NeverScrollableScrollPhysics(),
-    //     itemBuilder: (context, index) {
-    //       return Container(
-    //         margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-    //         child: IntrinsicHeight(
-    //           child: Row(
-    //             crossAxisAlignment: CrossAxisAlignment.stretch,
-    //             children: <Widget>[
-    //               Image.asset(
-    //                 "images/shophop/img/products" + list[index].images![0].src!,
-    //                 width: width * 0.25,
-    //                 height: width * 0.3,
-    //                 fit: BoxFit.fill,
-    //               ),
-    //               Expanded(
-    //                 child: Column(
-    //                   mainAxisSize: MainAxisSize.max,
-    //                   mainAxisAlignment: MainAxisAlignment.start,
-    //                   crossAxisAlignment: CrossAxisAlignment.start,
-    //                   children: <Widget>[
-    //                     Expanded(
-    //                       child: Column(
-    //                         crossAxisAlignment: CrossAxisAlignment.start,
-    //                         children: <Widget>[
-    //                           SizedBox(
-    //                             height: spacing_standard,
-    //                           ),
-    //                           Padding(
-    //                             padding: const EdgeInsets.only(left: 16.0),
-    //                             child: text(list[index].name, textColor: sh_textColorPrimary, fontSize: textSizeLargeMedium, fontFamily: fontMedium),
-    //                           ),
-    //                           Padding(
-    //                             padding: const EdgeInsets.only(left: 16.0, top: spacing_control),
-    //                             child: Row(
-    //                               children: <Widget>[
-    //                                 Container(
-    //                                   decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black),
-    //                                   padding: EdgeInsets.all(spacing_control_half),
-    //                                   child: Icon(
-    //                                     Icons.done,
-    //                                     color: sh_white,
-    //                                     size: 12,
-    //                                   ),
-    //                                 ),
-    //                                 SizedBox(
-    //                                   width: spacing_standard,
-    //                                 ),
-    //                                 text("M", textColor: sh_textColorPrimary, fontSize: textSizeMedium),
-    //                                 SizedBox(
-    //                                   width: spacing_standard,
-    //                                 ),
-    //                                 Container(
-    //                                   padding: EdgeInsets.fromLTRB(spacing_standard, 1, spacing_standard, 1),
-    //                                   decoration: BoxDecoration(border: Border.all(color: sh_view_color, width: 1)),
-    //                                   child: Row(
-    //                                     mainAxisAlignment: MainAxisAlignment.center,
-    //                                     crossAxisAlignment: CrossAxisAlignment.center,
-    //                                     children: <Widget>[
-    //                                       text("Qty: 5", textColor: sh_textColorPrimary, fontSize: textSizeSMedium),
-    //                                       Icon(
-    //                                         Icons.arrow_drop_down,
-    //                                         color: sh_textColorPrimary,
-    //                                         size: 16,
-    //                                       )
-    //                                     ],
-    //                                   ),
-    //                                 )
-    //                               ],
-    //                             ),
-    //                           ),
-    //                           Padding(
-    //                             padding: const EdgeInsets.only(left: 16.0),
-    //                             child: Row(
-    //                               crossAxisAlignment: CrossAxisAlignment.end,
-    //                               children: <Widget>[
-    //                                 text(list[index].on_sale! ? list[index].sale_price.toString().toCurrencyFormat() : list[index].price.toString().toCurrencyFormat(),
-    //                                     textColor: sh_colorPrimary, fontSize: textSizeNormal, fontFamily: fontMedium),
-    //                                 SizedBox(
-    //                                   width: spacing_control,
-    //                                 ),
-    //                                 Padding(
-    //                                   padding: const EdgeInsets.only(bottom: 3.0),
-    //                                   child: Text(
-    //                                     list[index].regular_price.toString().toCurrencyFormat()!,
-    //                                     style: TextStyle(color: sh_textColorSecondary, fontFamily: fontRegular, fontSize: textSizeSMedium, decoration: TextDecoration.lineThrough),
-    //                                   ),
-    //                                 ),
-    //                               ],
-    //                             ),
-    //                           ),
-    //                         ],
-    //                       ),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               )
-    //             ],
-    //           ),
-    //         ),
-    //       );
-    //       // return Chats(mListings[index], index);
-    //     })
-    //     : Container();
     var address = Container(
       width: double.infinity,
       padding: EdgeInsets.all(8),
@@ -214,6 +107,11 @@ class ShOrderSummaryScreenState extends State<ShOrderSummaryScreen> {
           Row(
             children: [
               Icon(Icons.map_outlined),
+              pickupController.pickupAddress != null ?
+              Flexible(
+                child: Text(pickupController.pickupAddress!.placeName.toString(),
+                    maxLines:2),
+              ):
               Text(
                 addressList[selectedPosition].address!,
               ),
@@ -222,6 +120,11 @@ class ShOrderSummaryScreenState extends State<ShOrderSummaryScreen> {
           Row(
             children: [
               Icon(Icons.location_city_rounded),
+              pickupController.pickupAddress != null ?
+              Flexible(
+                child: Text(pickupController.pickupAddress!.placeName.toString(),
+                    maxLines:2),
+              ):
               Text(
                 addressList[selectedPosition].city! +
                     "," +
@@ -232,6 +135,11 @@ class ShOrderSummaryScreenState extends State<ShOrderSummaryScreen> {
           Row(
             children: [
               Icon(Icons.flag_outlined),
+              pickupController.pickupAddress != null ?
+              Flexible(
+                child: Text(pickupController.pickupAddress!.placeFromattedAddress.toString(),
+                    maxLines:2),
+              ):
               Text(
                 addressList[selectedPosition].country! +
                     "," +
