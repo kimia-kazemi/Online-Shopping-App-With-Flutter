@@ -1,9 +1,9 @@
 # shoppo
 The project contains two pannels(User and Admin):
 Products API link:
-https://makeup-api.herokuapp.com/
+- https://makeup-api.herokuapp.com/
 Map APIs link:
-https://www.geoapify.com/
+- https://www.geoapify.com/
 
 Project contains:
 - Splash screen
