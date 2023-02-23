@@ -1,5 +1,5 @@
 # shoppo
-The project contains two pannels(User and Admin):
+The project contains two panels(User and Admin):
 Products API link:
 - https://makeup-api.herokuapp.com/
 Map APIs link:
@@ -11,7 +11,7 @@ Project contains:
 - Getting product using RESTful API
 - Saving data using shared preferences package 
 - Switch theme
-- GetX state management 
+- GetX state manager 
 - Google Map package
 - Reverse geocoding API
 - Places API
